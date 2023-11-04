@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <title>Revolut</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/x-icon" href="slike/revolut.png">
+</head>
+<body>
+<div class="okno">
+<div class="zgori">
+	<img src="slike/NapRevolut.png" alt="Revolut"width="200" height="50">
+	<br />Register your online bank account
+</div>
+<div class="sredina">
+<form>
+	<div class="lev">
+		<div class="nasl"><label  class="naslov" for="ime">Ime:</label></div>
+		<div class="polje"><input class="norm" type="text" id="ime" name="ime"></div>
+		<div class="nasl"><label  class="naslov" for="priimek">Priimek:</label></div>
+		<div class="polje"><input class="norm" type="text" id="priimek" name="priimek"></div>
+		<div class="nasl"><label  class="naslov" for="telst">Tel. stevilka:</label></div>
+		<div class="polje"><input class="norm" type="tel" id="teleph" name="teleph" pattern='^\+?\d{9,13}' placeholder="Primer: 0038641554661" required></div>
+		<div class="nasl"><label class="naslov" for="dav">Dav. stevilka:</label></div>
+		<div class="polje"><input class="norm" type="number" id="dav" name="dav"></div>
+	</div>
+	<div class="desn">
+		<div class="nasl"><label  class="naslov" for="spol">Spol:</label></div>
+		<div class="polje"><select  id="spol" class="izbira" required>
+            <option value="select" disabled selected>Spol</option>
+            <option value="Mo">Moški</option>
+            <option value="Ze">Ženski</option>
+			<option value="Dr">Drugo</option>
+		</select>
+		</div>
+		<div class="nasl"><label  class="naslov" for="eposta">E-posta:</label></div>
+		<div class="polje"><input type="email" class="norm" id="eposta" name="eposta" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$">
+		</div>
+		<div class="nasl"><label  class="naslov">Registracija:</label></div>
+		<div class="polje"><input class="izbira" type="submit" value="Submit"></div>
+	</div>
+</form>
+</div>
+<div class="spodi">Bc</div>
+</div>
+</body>
+</html>
