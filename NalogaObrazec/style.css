@@ -59,6 +59,10 @@ body{
 	text-align:center;
 	margin-top:10px;
 }
+a{
+	text-decoration:none;
+	color:white;
+}
 .norm{
 	margin-top: 5px;
 	margin-bottom:20px;
@@ -87,7 +91,7 @@ body{
 }
 @media (max-width: 1085px) {
 	.okno{
-		height:145vh;
+		height:125vh;
 		top: 100%;
 		left: 50%;
 		transform: translate(-50%, -60%);
@@ -99,8 +103,10 @@ body{
 		width:70%;
 		height:400px;
 		padding-bottom:0px;
+		margin-top:30px;
 	}
 	.sred{
+		margin-top:30px;
 		width:70%;
 	}
 	.desn{

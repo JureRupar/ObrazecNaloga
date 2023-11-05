@@ -4,11 +4,11 @@
     <title>Revolut</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="slike/revolut.png">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </head>
 <body>
 <div class="okno">
@@ -17,7 +17,7 @@
     <br />Ustvari račun svoje spletne banke
 </div>
 <div class="sredina">
-<form id="mojObrazec">
+<form id="mojObrazec" method="POST">
     <div class="lev">
         <div class="nasl"><label class="naslov" for="ime">Ime:</label></div>
         <div class="polje"><input class="norm" type="text" id="ime" name="ime" ></div>
@@ -53,10 +53,12 @@
     </div>
 </form>
 </div>
-<div class="spodi">Bc</div>
+<div class="spodi">
+    <a href="mailto:jure.rupar@tscng.org">Kontaktirajte nas</a>
 </div>
-	<script>
-	document.getElementById("mojObrazec").addEventListener("submit", function(event) {
+</div>
+<script>
+document.getElementById("mojObrazec").addEventListener("submit", function(event) {
     var ime = document.getElementById("ime").value;
     var priimek = document.getElementById("priimek").value;
     var teleph = document.getElementById("teleph").value;
@@ -64,6 +66,8 @@
     var birthday = document.getElementById("birthday").value;
     var spol = document.getElementById("spol").value;
     var eposta = document.getElementById("eposta").value;
+    var uporabnisko_ime = document.getElementById("uporabnisko_ime").value;
+    var geslo = document.getElementById("geslo").value;
 
     if (!ime || !priimek || !teleph || !dav || !birthday || spol === "select" || !eposta || !uporabnisko_ime || !geslo) {
         Swal.fire({
@@ -75,30 +79,30 @@
         event.preventDefault();
     } else {
         if (!preveriTelefonskoStevilko(teleph)) {
-				Swal.fire({
-                    title: 'Opozorilo',
-                    text: 'Telefonska številka ni pravilno oblikovana.',
-                    icon: 'error',
-                    confirmButtonText: 'V redu'
-                });
+            Swal.fire({
+                title: 'Opozorilo',
+                text: 'Telefonska številka ni pravilno oblikovana.',
+                icon: 'error',
+                confirmButtonText: 'V redu'
+            });
             event.preventDefault();
         }
         if (!preveriDavcnoStevilko(dav)) {
-				Swal.fire({
-                    title: 'Opozorilo',
-                    text: 'Davčna številka ni pravilno oblikovana.',
-                    icon: 'error',
-                    confirmButtonText: 'V redu'
-                });
+            Swal.fire({
+                title: 'Opozorilo',
+                text: 'Davčna številka ni pravilno oblikovana.',
+                icon: 'error',
+                confirmButtonText: 'V redu'
+            });
             event.preventDefault();
-		}
-		if (!preveriEpostniNAslov(eposta)) {
-				Swal.fire({
-                    title: 'Opozorilo',
-                    text: 'Epostni naslov ni pravilno napisan.',
-                    icon: 'error',
-                    confirmButtonText: 'V redu'
-                });
+        }
+        if (!preveriEpostniNAslov(eposta)) {
+            Swal.fire({
+                title: 'Opozorilo',
+                text: 'Epostni naslov ni pravilno napisan.',
+                icon: 'error',
+                confirmButtonText: 'V redu'
+            });
             event.preventDefault();
         } else {
             Swal.fire({
@@ -120,23 +124,25 @@ function preveriDavcnoStevilko(dav) {
     var vzorec = /^[A-Z]{2}\d{9}$/;
     return vzorec.test(dav);
 }
-function preveriEpostniNaslov(eposta){
-	var vzorec = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}/;
-	return vzorec.test(eposta);
+
+function preveriEpostniNaslov(eposta) {
+    var vzorec = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}/;
+    return vzorec.test(eposta);
 }
+
 const birthdayInput = document.getElementById("birthday");
 
 birthdayInput.addEventListener("change", function() {
     const selectedDate = new Date(birthdayInput.value);
-    
-    const day = String(selectedDate.getDate()).padStart(2, '0');
-    const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
-    const year = selectedDate.getFullYear();
 
-    const formattedDate = `${day}/${month}/${year}`;
-    
+    const year = selectedDate.getFullYear();
+    const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+    const day = String(selectedDate.getDate()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day}`;
+
     birthdayInput.value = formattedDate;
 });
-	</script>
+</script>
 </body>
 </html>
