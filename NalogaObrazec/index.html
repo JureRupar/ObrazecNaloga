@@ -46,7 +46,7 @@
         <div class="nasl"><label class="naslov" for="geslo">Geslo:</label></div>
         <div class="polje"><input class="norm" type="password" id="geslo" name="geslo" ></div>
         <div class="nasl"><label class="naslov">Registracija:</label></div>
-        <div class="polje"><input class="izbira" type="submit" value="Pošlji"></div>
+        <div class="polje"><button class="izbira" id="submitButton">Prijava</button></div>
     </div>
     <div class="desn">
         <img src="slike/stocks.png" alt="Delnice" width="200" height="400">
@@ -58,7 +58,7 @@
 </div>
 </div>
 <script>
-document.getElementById("mojObrazec").addEventListener("submit", function(event) {
+document.getElementById("submitButton").addEventListener("click", function(event) {
     var ime = document.getElementById("ime").value;
     var priimek = document.getElementById("priimek").value;
     var teleph = document.getElementById("teleph").value;
@@ -86,8 +86,7 @@ document.getElementById("mojObrazec").addEventListener("submit", function(event)
                 confirmButtonText: 'V redu'
             });
             event.preventDefault();
-        }
-        if (!preveriDavcnoStevilko(dav)) {
+        } else if (!preveriDavcnoStevilko(dav)) {
             Swal.fire({
                 title: 'Opozorilo',
                 text: 'Davčna številka ni pravilno oblikovana.',
@@ -95,8 +94,7 @@ document.getElementById("mojObrazec").addEventListener("submit", function(event)
                 confirmButtonText: 'V redu'
             });
             event.preventDefault();
-        }
-        if (!preveriEpostniNAslov(eposta)) {
+        } else if (!preveriEpostniNaslov(eposta)) {
             Swal.fire({
                 title: 'Opozorilo',
                 text: 'Epostni naslov ni pravilno napisan.',
@@ -111,6 +109,7 @@ document.getElementById("mojObrazec").addEventListener("submit", function(event)
                 icon: 'success',
                 confirmButtonText: 'V redu'
             });
+			event.preventDefault();
         }
     }
 });

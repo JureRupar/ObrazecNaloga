@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <title>Revolut</title>
+    <link rel="stylesheet" href="stylePOkn.css">
+    <link rel="icon" type="image/x-icon" href="slike/revolut.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+    <div class="okno">
+        <div class="zgori">
+            <img src="slike/NapRevolut.png" alt="Revolut" width="300" height="75">
+            <br />Vaša spletna banka
+        </div>
+			<form id="mojObrazec" method="POST">
+				<div class="sredina">
+				<div class="nasl"><label for="uporabnisko_ime">Uporabniško ime:</label></div>
+				<div class="polje"><input class="tadr" type="text" id="uporabnisko_ime" name="uporabnisko_ime" ></div>
+				<div class="nasl"><label for="geslo">Geslo:</label></div>
+				<div class="polje"><input class="tadr" type="password" id="geslo" name="geslo" ></div>
+				<div class="nasl"><label>Prijava:</label></div>
+				<div class="polje"><input class="tadr" type="submit" value="submit"></div>
+			</form>
+        </div>
+    </div>
+    <script>
+		document.getElementById("mojObrazec").addEventListener("submit", function(event) {
+			var uporabnisko_ime = document.getElementById("uporabnisko_ime").value;
+			var geslo = document.getElementById("geslo").value;
+			if(!uporabnisko_ime || !geslo) {
+			    Swal.fire({
+					title: 'Opozorilo',
+					text: 'Prosimo, zapolnite vsa obvezna polja obrazca.',
+					icon: 'error',
+					confirmButtonText: 'V redu'
+				});
+				event.preventDefault();
+				}
+			else {
+				Swal.fire({
+					title: 'Uspešno',
+					text: 'Obrazec je bil uspešno oddan!',
+					icon: 'success',
+					confirmButtonText: 'V redu'
+					});
+					event.preventDefault();
+				}
+		});
+    </script>
+</body>
+</html>
