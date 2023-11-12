@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <title>Revolut</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" type="image/x-icon" href="slike/revolut.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,7 +108,9 @@ document.getElementById("submitButton").addEventListener("click", function(event
                 text: 'Obrazec je bil uspešno oddan!',
                 icon: 'success',
                 confirmButtonText: 'V redu'
-            });
+            }).then(function () {
+					window.location.href = "prijava.html";
+					})
 			event.preventDefault();
         }
     }

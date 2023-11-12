@@ -5,7 +5,7 @@
 html, body{
 	width: 100%;
 	height: 100%;
-	transition: all 0.5s;
+	transition: width 1s, height 1s;
 }
 body{
 	background-image: linear-gradient(to right, rgb(69, 17, 33), rgb(24, 41, 87));
@@ -23,6 +23,10 @@ body{
 	text-align:center;
 	border-radius:30px;
 	color:white;
+	transition: width 1s, height 1s;
+}
+.okno.hidden {
+            opacity: 0;
 }
 .zgori{
 	height:150px;
@@ -43,7 +47,17 @@ body{
 	border: 3px rgba(39,68,146,255) solid;
 	border-radius: 5px;
 	padding: 2px;
-	height: 30px;
+	height: 40px;
+	width: 250px;
+	font-size: 1em;
+}
+.norm1{
+	margin-top: 1px;
+	margin-bottom:3px;
+	border: 3px rgba(39,68,146,255) solid;
+	border-radius: 5px;
+	padding: 2px;
+	height: 35px;
 	width: 250px;
 	font-size: 1em;
 }
@@ -53,7 +67,7 @@ body{
 	border: 3px rgba(39,68,146,255) solid;
 	border-radius: 5px;
 	padding: 2px;
-	height: 30px;
-	width: 250px;
+	height: 43px;
+	width: 260px;
 	font-size: 1em;
 }

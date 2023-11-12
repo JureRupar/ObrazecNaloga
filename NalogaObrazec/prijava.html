@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <title>Revolut</title>
-    <link rel="stylesheet" href="stylePOkn.css">
+    <link rel="stylesheet" href="styles/stylePOkn.css">
     <link rel="icon" type="image/x-icon" href="slike/revolut.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,11 +18,11 @@
 			<form id="mojObrazec" method="POST">
 				<div class="sredina">
 				<div class="nasl"><label for="uporabnisko_ime">Uporabniško ime:</label></div>
-				<div class="polje"><input class="tadr" type="text" id="uporabnisko_ime" name="uporabnisko_ime" ></div>
+				<div class="polje"><input class="norm1" type="text" id="uporabnisko_ime" name="uporabnisko_ime" ></div>
 				<div class="nasl"><label for="geslo">Geslo:</label></div>
-				<div class="polje"><input class="tadr" type="password" id="geslo" name="geslo" ></div>
+				<div class="polje"><input class="norm1" type="password" id="geslo" name="geslo" ></div>
 				<div class="nasl"><label>Prijava:</label></div>
-				<div class="polje"><input class="tadr" type="submit" value="submit"></div>
+				<div class="polje"><input class="tadr" type="submit" value="Prijava"></div>
 			</form>
         </div>
     </div>
@@ -45,7 +45,9 @@
 					text: 'Obrazec je bil uspešno oddan!',
 					icon: 'success',
 					confirmButtonText: 'V redu'
-					});
+					}).then(function () {
+					window.location.href = "okno.html";
+					})
 					event.preventDefault();
 				}
 		});

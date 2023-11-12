@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
     <title>Revolut</title>
-    <link rel="stylesheet" href="stylePOkn.css">
+    <link rel="stylesheet" href="styles/stylePOkn.css">
     <link rel="icon" type="image/x-icon" href="slike/revolut.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +19,7 @@
             <button class="norm" id="drugoOkno" onclick="drugoOkno()">Prijava</button>
         </div>
     </div>
+</body>
     <script>
         function povecajDiv() {
             const okno = document.querySelector(".okno");
@@ -26,16 +27,14 @@
             okno.style.height = "70%";
             setTimeout(function() {
                 window.location.href = "index.html";
-            }, 520);
+            }, 1000);
         }
         function drugoOkno() {
             const okno = document.querySelector(".okno");
-            okno.style.width = "70%";
-            okno.style.height = "70%";
+            okno.classList.add('hidden');
             setTimeout(function() {
                 window.location.href = "prijava.html";
-            }, 520);
+            }, 1000);
         }
     </script>
-</body>
 </html>
