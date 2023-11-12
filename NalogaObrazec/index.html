@@ -2,148 +2,39 @@
 <html lang="sl">
 <head>
     <title>Revolut</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/stylePOkn.css">
     <link rel="icon" type="image/x-icon" href="slike/revolut.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="okno">
-<div class="zgori">
-    <img src="slike/NapRevolut.png" alt="Revolut" width="300" height="75">
-    <br />Ustvari račun svoje spletne banke
-</div>
-<div class="sredina">
-<form id="mojObrazec" method="POST">
-    <div class="lev">
-        <div class="nasl"><label class="naslov" for="ime">Ime:</label></div>
-        <div class="polje"><input class="norm" type="text" id="ime" name="ime" ></div>
-        <div class="nasl"><label class="naslov" for="priimek">Priimek:</label></div>
-        <div class="polje"><input class="norm" type="text" id="priimek" name="priimek" ></div>
-        <div class="nasl"><label class="naslov" for="teleph">Tel. številka:</label></div>
-        <div class="polje"><input class="norm" type="tel" id="teleph" name="teleph" placeholder="Primer: 0038641554661" ></div>
-        <div class="nasl"><label class="naslov" for="dav">Dav. številka:</label></div>
-        <div class="polje"><input class="norm" type="text" id="dav" name="dav" ></div>
-        <div class="nasl"><label class="naslov" for="spol">Spol:</label></div>
-        <div class="polje"><select id="spol" class="izbira" >
-            <option value="select" disabled selected>Spol</option>
-            <option value="Mo">Moški</option>
-            <option value="Ze">Ženski</option>
-            <option value="Dr">Drugo</option>
-        </select>
+    <div class="okno">
+        <div class="zgori">
+            <img src="slike/NapRevolut.png" alt="Revolut" width="300" height="75">
+            <br />Vaša spletna banka
+        </div>
+        <div class="sredina">
+            <button class="norm" id="povecajGumb" onclick="povecajDiv()">Registraciaja</button>
+            <button class="norm" id="drugoOkno" onclick="drugoOkno()">Prijava</button>
         </div>
     </div>
-    <div class="sred">
-        <div class="nasl"><label class="naslov" for="eposta">E-pošta:</label></div>
-        <div class="polje"><input type="email" class="norm" id="eposta" name="eposta" ></div>
-        <div class="nasl"><label class="naslov" for="birthday">Datum rojstva:</label></div>
-        <div class="polje"><input class="norm" type="date" id="birthday" name="birthday" ></div>
-        <div class="nasl"><label class="naslov" for="uporabnisko_ime">Uporabniško ime:</label></div>
-        <div class="polje"><input class="norm" type="text" id="uporabnisko_ime" name="uporabnisko_ime" ></div>
-        <div class="nasl"><label class="naslov" for="geslo">Geslo:</label></div>
-        <div class="polje"><input class="norm" type="password" id="geslo" name="geslo" ></div>
-        <div class="nasl"><label class="naslov">Registracija:</label></div>
-        <div class="polje"><button class="izbira" id="submitButton">Prijava</button></div>
-    </div>
-    <div class="desn">
-        <img src="slike/stocks.png" alt="Delnice" width="200" height="400">
-    </div>
-</form>
-</div>
-<div class="spodi">
-    <a href="mailto:jure.rupar@tscng.org">Kontaktirajte nas</a>
-</div>
-</div>
-<script>
-document.getElementById("submitButton").addEventListener("click", function(event) {
-    var ime = document.getElementById("ime").value;
-    var priimek = document.getElementById("priimek").value;
-    var teleph = document.getElementById("teleph").value;
-    var dav = document.getElementById("dav").value;
-    var birthday = document.getElementById("birthday").value;
-    var spol = document.getElementById("spol").value;
-    var eposta = document.getElementById("eposta").value;
-    var uporabnisko_ime = document.getElementById("uporabnisko_ime").value;
-    var geslo = document.getElementById("geslo").value;
-
-    if (!ime || !priimek || !teleph || !dav || !birthday || spol === "select" || !eposta || !uporabnisko_ime || !geslo) {
-        Swal.fire({
-            title: 'Opozorilo',
-            text: 'Prosimo, zapolnite vsa obvezna polja obrazca.',
-            icon: 'error',
-            confirmButtonText: 'V redu'
-        });
-        event.preventDefault();
-    } else {
-        if (!preveriTelefonskoStevilko(teleph)) {
-            Swal.fire({
-                title: 'Opozorilo',
-                text: 'Telefonska številka ni pravilno oblikovana.',
-                icon: 'error',
-                confirmButtonText: 'V redu'
-            });
-            event.preventDefault();
-        } else if (!preveriDavcnoStevilko(dav)) {
-            Swal.fire({
-                title: 'Opozorilo',
-                text: 'Davčna številka ni pravilno oblikovana.',
-                icon: 'error',
-                confirmButtonText: 'V redu'
-            });
-            event.preventDefault();
-        } else if (!preveriEpostniNaslov(eposta)) {
-            Swal.fire({
-                title: 'Opozorilo',
-                text: 'Epostni naslov ni pravilno napisan.',
-                icon: 'error',
-                confirmButtonText: 'V redu'
-            });
-            event.preventDefault();
-        } else {
-            Swal.fire({
-                title: 'Uspešno',
-                text: 'Obrazec je bil uspešno oddan!',
-                icon: 'success',
-                confirmButtonText: 'V redu'
-            }).then(function () {
-					window.location.href = "prijava.html";
-					})
-			event.preventDefault();
-        }
-    }
-});
-
-function preveriTelefonskoStevilko(teleph) {
-    var vzorec = /^\d{12}$/;
-    return vzorec.test(teleph);
-}
-
-function preveriDavcnoStevilko(dav) {
-    var vzorec = /^[A-Z]{2}\d{9}$/;
-    return vzorec.test(dav);
-}
-
-function preveriEpostniNaslov(eposta) {
-    var vzorec = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}/;
-    return vzorec.test(eposta);
-}
-
-const birthdayInput = document.getElementById("birthday");
-
-birthdayInput.addEventListener("change", function() {
-    const selectedDate = new Date(birthdayInput.value);
-
-    const year = selectedDate.getFullYear();
-    const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
-    const day = String(selectedDate.getDate()).padStart(2, '0');
-
-    const formattedDate = `${year}-${month}-${day}`;
-
-    birthdayInput.value = formattedDate;
-});
-</script>
 </body>
+    <script>
+        function povecajDiv() {
+            const okno = document.querySelector(".okno");
+            okno.style.width = "70%";
+            okno.style.height = "70%";
+            setTimeout(function() {
+                window.location.href = "registracija.html";
+            }, 1000);
+        }
+        function drugoOkno() {
+            const okno = document.querySelector(".okno");
+            okno.classList.add('hidden');
+            setTimeout(function() {
+                window.location.href = "prijava.html";
+            }, 1000);
+        }
+    </script>
 </html>
