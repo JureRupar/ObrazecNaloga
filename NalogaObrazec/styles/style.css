@@ -73,6 +73,7 @@ a{
 	height: 25px;
 	width: 250px;
 	font-size: 1em;
+	font-family: 'Montserrat', sans-serif;
 }
 .izbira{
 	margin-top: 10px;
@@ -88,6 +89,10 @@ a{
 .naslov{
 	margin-bottom: 10px;
 	margin-left:20px;
+}
+.kontakt{
+	cursor:pointer;
+	color:white;
 }
 @media (max-width: 1085px) {
 	.okno{
