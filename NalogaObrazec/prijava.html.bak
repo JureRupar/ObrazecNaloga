@@ -35,7 +35,6 @@
 					title: 'Opozorilo',
 					text: 'Prosimo, zapolnite vsa obvezna polja obrazca.',
 					icon: 'error',
-					confirmButtonColor: 'rgba(39,68,146,255)',
 					confirmButtonText: 'V redu'
 				});
 				event.preventDefault();
@@ -45,7 +44,6 @@
 					title: 'Uspešno',
 					text: 'Obrazec je bil uspešno oddan!',
 					icon: 'success',
-					confirmButtonColor: 'rgba(39,68,146,255)',
 					confirmButtonText: 'V redu'
 					}).then(function () {
 					window.location.href = "index.html";

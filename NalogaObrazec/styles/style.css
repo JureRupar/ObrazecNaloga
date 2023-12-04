@@ -74,6 +74,8 @@ a{
 	width: 250px;
 	font-size: 1em;
 	font-family: 'Montserrat', sans-serif;
+	color: black;
+	font-weight: bold;
 }
 .izbira{
 	margin-top: 10px;
@@ -130,4 +132,7 @@ a{
 	.spodd{
 		width:70%;
 	}
+}
+.swal2-popup .swal2-styled:focus {
+    box-shadow: none !important;
 }

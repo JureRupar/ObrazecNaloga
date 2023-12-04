@@ -60,7 +60,7 @@
 <script>
 document.getElementById("sproziSweetAlert").addEventListener("click", function () {
         Swal.fire({
-            title: 'E-pošta',
+            title: 'E-pošta:',
             html: 'support@revolut.com',
             icon: 'info',
 			confirmButtonColor: 'rgba(39,68,146,255)',
